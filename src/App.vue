@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="min-h-screen">
     <router-view />
   </div>
 </template>
@@ -11,8 +11,7 @@ export default {
 </script>
 
 <style>
-@import './styles/theme.css';
-@import './styles/utilities.css';
+@import "tailwindcss";
 
 * {
   margin: 0;
@@ -27,10 +26,6 @@ body {
   overflow-x: hidden;
 }
 
-#app {
-  min-height: 100vh;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -40,15 +35,15 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-background);
+  background: #1a2e1f;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
+  background: #E1B46A;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
+  background: #F4D03F;
 }
 </style>

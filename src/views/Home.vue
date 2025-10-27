@@ -53,8 +53,6 @@ export default {
 
 <style scoped>
 .home {
-  overflow-x: hidden;
-  overflow-y: visible;
-  min-height: 100vh;
+  @apply overflow-x-hidden overflow-y-visible min-h-screen;
 }
 </style>

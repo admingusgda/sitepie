@@ -1,23 +1,59 @@
 <template>
-  <header class="header" :class="{ 'scrolled': isScrolled }">
-    <nav class="nav">
-      <div class="nav-brand">
-        <h2>Dra. Pietra Ribeiro</h2>
-        <span>Advocacia</span>
+  <header
+    class="fixed top-0 left-0 right-0 z-[1000] bg-white/95 backdrop-blur-[10px] transition-all duration-300 border-b"
+    :class="isScrolled ? 'border-gray-200 shadow-md' : 'border-transparent'"
+  >
+    <nav class="max-w-container mx-auto px-8 md:px-4 py-4 flex justify-between items-center">
+      <div class="flex flex-col">
+        <h2 class="text-primary text-2xl md:text-xl font-bold m-0">Dra. Pietra Ribeiro</h2>
+        <span class="text-gray-500 text-sm md:text-xs font-normal">Advocacia</span>
       </div>
-      
-      <div class="nav-menu" :class="{ 'active': isMenuOpen }">
-        <a href="#home" @click="closeMenu">Início</a>
-        <a href="#about" @click="closeMenu">Sobre</a>
-        <a href="#services" @click="closeMenu">Serviços</a>
-        <a href="#testimonials" @click="closeMenu">Depoimentos</a>
-        <a href="#contact" @click="closeMenu">Contato</a>
+
+      <div
+        class="flex gap-8 items-center md:fixed md:top-full md:left-0 md:right-0 md:bg-white md:flex-col md:p-lg md:gap-md md:shadow-lg md:transition-all md:duration-300"
+        :class="isMenuOpen ? 'md:translate-y-0 md:opacity-100 md:visible' : 'md:-translate-y-full md:opacity-0 md:invisible'"
+      >
+        <a
+          href="#home"
+          @click="closeMenu"
+          class="no-underline text-gray-700 font-medium transition-colors duration-300 relative hover:text-primary after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-border after:transition-[width] after:duration-300 hover:after:w-full md:text-lg md:p-xs"
+        >
+          Início
+        </a>
+        <a
+          href="#about"
+          @click="closeMenu"
+          class="no-underline text-gray-700 font-medium transition-colors duration-300 relative hover:text-primary after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-border after:transition-[width] after:duration-300 hover:after:w-full md:text-lg md:p-xs"
+        >
+          Sobre
+        </a>
+        <a
+          href="#services"
+          @click="closeMenu"
+          class="no-underline text-gray-700 font-medium transition-colors duration-300 relative hover:text-primary after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-border after:transition-[width] after:duration-300 hover:after:w-full md:text-lg md:p-xs"
+        >
+          Serviços
+        </a>
+        <a
+          href="#testimonials"
+          @click="closeMenu"
+          class="no-underline text-gray-700 font-medium transition-colors duration-300 relative hover:text-primary after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-border after:transition-[width] after:duration-300 hover:after:w-full md:text-lg md:p-xs"
+        >
+          Depoimentos
+        </a>
+        <a
+          href="#contact"
+          @click="closeMenu"
+          class="no-underline text-gray-700 font-medium transition-colors duration-300 relative hover:text-primary after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-border after:transition-[width] after:duration-300 hover:after:w-full md:text-lg md:p-xs"
+        >
+          Contato
+        </a>
       </div>
-      
-      <div class="nav-toggle" @click="toggleMenu">
-        <span></span>
-        <span></span>
-        <span></span>
+
+      <div class="hidden md:flex flex-col cursor-pointer gap-1" @click="toggleMenu">
+        <span class="w-[25px] h-[3px] bg-gray-700 transition-all duration-300 rounded-sm"></span>
+        <span class="w-[25px] h-[3px] bg-gray-700 transition-all duration-300 rounded-sm"></span>
+        <span class="w-[25px] h-[3px] bg-gray-700 transition-all duration-300 rounded-sm"></span>
       </div>
     </nav>
   </header>
@@ -32,15 +68,15 @@ export default {
   setup() {
     const { isScrolled } = useScroll()
     const isMenuOpen = ref(false)
-    
+
     const toggleMenu = () => {
       isMenuOpen.value = !isMenuOpen.value
     }
-    
+
     const closeMenu = () => {
       isMenuOpen.value = false
     }
-    
+
     return {
       isScrolled,
       isMenuOpen,
@@ -50,150 +86,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  border-bottom: 1px solid transparent;
-}
-
-.header.scrolled {
-  background: rgba(255, 255, 255, 0.98);
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-brand h2 {
-  color: var(--color-primary);
-  font-size: var(--font-size-2xl);
-  font-weight: 700;
-  margin: 0;
-}
-
-.nav-brand span {
-  color: #6b7280;
-  font-size: 0.9rem;
-  font-weight: 400;
-}
-
-.nav-menu {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-
-.nav-menu a {
-  text-decoration: none;
-  color: #374151;
-  font-weight: 500;
-  transition: color 0.3s ease;
-  position: relative;
-}
-
-.nav-menu a:hover {
-  color: var(--color-primary);
-}
-
-.nav-menu a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--color-border);
-  transition: width var(--transition-base);
-}
-
-.nav-menu a:hover::after {
-  width: 100%;
-}
-
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 4px;
-}
-
-.nav-toggle span {
-  width: 25px;
-  height: 3px;
-  background: #374151;
-  transition: all 0.3s ease;
-  border-radius: 2px;
-}
-
-@media (max-width: 768px) {
-  .nav {
-    padding: var(--spacing-sm);
-  }
-
-  .nav-brand h2 {
-    font-size: var(--font-size-xl);
-  }
-
-  .nav-brand span {
-    font-size: var(--font-size-sm);
-  }
-  
-  .nav-menu {
-    position: fixed;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: white;
-    flex-direction: column;
-    padding: var(--spacing-lg);
-    gap: var(--spacing-md);
-    transform: translateY(-100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: all var(--transition-base);
-    box-shadow: var(--shadow-lg);
-  }
-  
-  .nav-menu.active {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .nav-menu a {
-    font-size: var(--font-size-lg);
-    padding: var(--spacing-xs);
-  }
-
-  .nav-toggle {
-    display: flex;
-  }
-  
-  .nav-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  
-  .nav-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .nav-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
-  }
-}
-</style>
