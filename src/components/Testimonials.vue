@@ -1,77 +1,82 @@
 <template>
-  <section id="testimonials" class="testimonials">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <h2>O que nossos clientes dizem</h2>
-        <p>Depoimentos de quem confia nos serviços da Dra. Pietra</p>
+  <section id="testimonials" class="py-20 md:py-12 bg-[#0f1910]">
+    <div class="max-w-7xl mx-auto px-8 md:px-4">
+      <div class="text-center mb-16 md:mb-12" data-aos="fade-up">
+        <h2 class="text-4xl md:text-3xl font-bold text-[#E1B46A] mb-4">O que nossos clientes dizem</h2>
+        <p class="text-lg md:text-base text-[#E8D5B7]">Depoimentos de quem confia nos serviços da Dra. Pietra</p>
       </div>
-      
-      <div class="testimonials-slider">
-        <div class="testimonials-track" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
-          <div 
-            v-for="(testimonial, index) in testimonials" 
+
+      <div class="relative overflow-hidden rounded-3xl">
+        <div class="flex transition-transform duration-500 ease-in-out" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
+          <div
+            v-for="(testimonial, index) in testimonials"
             :key="testimonial.id"
-            class="testimonial-slide"
+            class="min-w-full flex-shrink-0"
           >
-            <div class="testimonial-card" data-aos="fade-up" :data-aos-delay="index * 100">
-              <div class="testimonial-content">
-                <div class="quote-icon">"</div>
-                <p class="testimonial-text">{{ testimonial.text }}</p>
-                <div class="testimonial-rating">
-                  <span 
-                    v-for="star in 5" 
+            <div class="bg-[#1a2e1f] rounded-2xl p-12 md:p-8 shadow-lg text-center relative overflow-hidden border border-[#E1B46A]/30 mx-2 md:mx-1" data-aos="fade-up" :data-aos-delay="index * 100">
+              <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E1B46A] to-[#F4D03F]"></div>
+
+              <div class="mb-6 md:mb-4">
+                <div class="text-6xl md:text-5xl text-[#E1B46A] font-bold leading-none mb-4 md:mb-2 opacity-30">"</div>
+                <p class="text-xl md:text-base leading-relaxed text-[#E8D5B7] italic mb-6 md:mb-4 relative">
+                  {{ testimonial.text }}
+                </p>
+                <div class="flex justify-center gap-1">
+                  <span
+                    v-for="star in 5"
                     :key="star"
-                    class="star"
-                    :class="{ 'filled': star <= testimonial.rating }"
+                    class="text-2xl md:text-xl transition-colors duration-300"
+                    :class="star <= testimonial.rating ? 'text-[#E1B46A]' : 'text-gray-400'"
                   >
                     ★
                   </span>
                 </div>
               </div>
-              
-              <div class="testimonial-author">
-                <div class="author-image">
-                  <img 
-                    :src="testimonial.image" 
+
+              <div class="flex flex-col md:flex-col items-center justify-center gap-4 md:gap-3">
+                <div class="w-[60px] h-[60px] md:w-[50px] md:h-[50px] rounded-full overflow-hidden border-3 md:border-2 border-[#E1B46A] relative bg-[#1a2e1f]">
+                  <img
+                    :src="testimonial.image"
                     :alt="testimonial.name"
+                    class="w-full h-full object-cover"
                     @error="handleImageError($event, testimonial.id)"
                   />
-                  <div class="author-placeholder" v-if="imageErrors[testimonial.id]">
+                  <div v-if="imageErrors[testimonial.id]" class="w-full h-full flex items-center justify-center bg-[#E1B46A] text-[#1a2e1f] text-2xl md:text-xl font-bold">
                     <span>{{ testimonial.name.charAt(0) }}</span>
                   </div>
                 </div>
-                <div class="author-info">
-                  <h4>{{ testimonial.name }}</h4>
-                  <p>{{ testimonial.company }}</p>
+                <div class="text-center">
+                  <h4 class="text-xl md:text-lg font-semibold text-[#E1B46A] mb-1">{{ testimonial.name }}</h4>
+                  <p class="text-base md:text-sm text-[#E8D5B7]">{{ testimonial.company }}</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
-        <div class="slider-controls">
-          <button 
-            class="slider-btn prev" 
+
+        <div class="absolute top-1/2 left-0 right-0 flex justify-between pointer-events-none -translate-y-1/2">
+          <button
+            class="bg-[#E1B46A] border-none w-[50px] h-[50px] md:w-[40px] md:h-[40px] rounded-full flex items-center justify-center text-3xl md:text-2xl text-[#1a2e1f] cursor-pointer shadow-sm transition-all duration-300 pointer-events-auto mx-2 md:mx-1 hover:bg-[#F4D03F] hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
             @click="previousSlide"
             :disabled="currentSlide === 0"
           >
             ‹
           </button>
-          <button 
-            class="slider-btn next" 
+          <button
+            class="bg-[#E1B46A] border-none w-[50px] h-[50px] md:w-[40px] md:h-[40px] rounded-full flex items-center justify-center text-3xl md:text-2xl text-[#1a2e1f] cursor-pointer shadow-sm transition-all duration-300 pointer-events-auto mx-2 md:mx-1 hover:bg-[#F4D03F] hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
             @click="nextSlide"
             :disabled="currentSlide === testimonials.length - 1"
           >
             ›
           </button>
         </div>
-        
-        <div class="slider-dots">
-          <button 
-            v-for="(testimonial, index) in testimonials" 
+
+        <div class="flex justify-center gap-2 mt-8 md:mt-6 pb-2">
+          <button
+            v-for="(testimonial, index) in testimonials"
             :key="index"
-            class="dot"
-            :class="{ 'active': index === currentSlide }"
+            class="w-3 h-3 md:w-2.5 md:h-2.5 rounded-full border-none cursor-pointer transition-all duration-300 hover:bg-gray-400"
+            :class="index === currentSlide ? 'bg-[#E1B46A] scale-125 md:scale-120' : 'bg-gray-400'"
             @click="goToSlide(index)"
           ></button>
         </div>
@@ -90,11 +95,11 @@ export default {
   setup() {
     const { currentSlide, nextSlide, previousSlide, goToSlide } = useSlider(testimonials, 5000)
     const imageErrors = ref({})
-    
+
     const handleImageError = (event, testimonialId) => {
       imageErrors.value[testimonialId] = true
     }
-    
+
     return {
       testimonials,
       currentSlide,
@@ -107,260 +112,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.testimonials {
-  padding: var(--section-padding);
-  background: var(--color-background-alt);
-}
-
-.testimonials-slider {
-  position: relative;
-  overflow: hidden;
-  border-radius: 20px;
-}
-
-.testimonials-track {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.testimonial-slide {
-  min-width: 100%;
-  flex-shrink: 0;
-}
-
-.testimonial-card {
-  background: var(--color-secondary);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-2xl);
-  box-shadow: var(--shadow-lg);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-}
-
-.testimonial-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-}
-
-.testimonial-content {
-  margin-bottom: var(--spacing-lg);
-}
-
-.quote-icon {
-  font-size: var(--font-size-5xl);
-  color: var(--color-primary);
-  font-weight: bold;
-  line-height: 1;
-  margin-bottom: var(--spacing-sm);
-  opacity: 0.3;
-}
-
-.testimonial-text {
-  font-size: var(--font-size-xl);
-  line-height: 1.7;
-  color: var(--color-text);
-  font-style: italic;
-  margin-bottom: var(--spacing-lg);
-  position: relative;
-}
-
-.testimonial-rating {
-  display: flex;
-  justify-content: center;
-  gap: 0.25rem;
-}
-
-.star {
-  font-size: 1.5rem;
-  color: #d1d5db;
-  transition: color 0.3s ease;
-}
-
-.star.filled {
-  color: var(--color-primary);
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-sm);
-}
-
-.author-image {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid var(--color-border);
-  position: relative;
-  background: var(--color-secondary);
-}
-
-.author-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.author-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-primary);
-  color: var(--color-secondary);
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.author-info h4 {
-  font-size: var(--font-size-xl);
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: 0.25rem;
-}
-
-.author-info p {
-  font-size: var(--font-size-base);
-  color: var(--color-text);
-}
-
-.slider-controls {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-  transform: translateY(-50%);
-}
-
-.slider-btn {
-  background: var(--color-primary);
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--font-size-2xl);
-  color: var(--color-secondary);
-  cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-base);
-  pointer-events: all;
-  margin: 0 var(--spacing-sm);
-}
-
-.slider-btn:hover:not(:disabled) {
-  background: var(--color-accent);
-  color: var(--color-secondary);
-  transform: scale(1.1);
-}
-
-.slider-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.slider-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 2rem;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: none;
-  background: #d1d5db;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.dot.active {
-  background: var(--color-primary);
-  transform: scale(1.2);
-}
-
-.dot:hover {
-  background: #9ca3af;
-}
-
-@media (max-width: 768px) {
-  .testimonial-card {
-    padding: var(--spacing-lg);
-    margin: var(--spacing-sm);
-  }
-  
-  .quote-icon {
-    font-size: var(--font-size-4xl);
-    margin-bottom: var(--spacing-xs);
-  }
-  
-  .testimonial-text {
-    font-size: var(--font-size-base);
-    margin-bottom: var(--spacing-md);
-  }
-  
-  .testimonial-rating {
-    margin-bottom: var(--spacing-md);
-  }
-
-  .star {
-    font-size: var(--font-size-xl);
-  }
-  
-  .slider-btn {
-    width: 40px;
-    height: 40px;
-    font-size: var(--font-size-xl);
-    margin: 0 0.25rem;
-  }
-
-  .slider-controls {
-    margin: 0 var(--spacing-xs);
-  }
-  
-  .author-image {
-    width: 50px;
-    height: 50px;
-    border: 2px solid var(--color-border);
-  }
-
-  .author-placeholder span {
-    font-size: 1.2rem;
-  }
-  
-  .testimonial-author {
-    flex-direction: column;
-    text-align: center;
-    gap: var(--spacing-sm);
-  }
-
-  .slider-dots {
-    margin-top: var(--spacing-lg);
-    padding-bottom: var(--spacing-sm);
-  }
-
-  .dot {
-    width: 10px;
-    height: 10px;
-  }
-}
-</style>

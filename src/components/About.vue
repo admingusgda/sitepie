@@ -1,78 +1,111 @@
 <template>
-  <section id="about" class="about">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <h2>Sobre Dra. Pietra Ribeiro</h2>
-        <p>Conheça a trajetória e expertise da Dra. Pietra</p>
+  <section id="about" class="py-20 md:py-12 bg-[#0f1910]">
+    <div class="max-w-7xl mx-auto px-8 md:px-4">
+      <div class="text-center mb-16 md:mb-12" data-aos="fade-up">
+        <h2 class="text-4xl md:text-3xl font-bold text-[#E1B46A] mb-4">Sobre Dra. Pietra Ribeiro</h2>
+        <p class="text-lg md:text-base text-[#E8D5B7]">Conheça a trajetória e expertise da Dra. Pietra</p>
       </div>
-      
-      <div class="about-content">
-        <div class="about-text" data-aos="fade-right">
-          <div class="about-intro">
-            <h3>Uma advogada dedicada à excelência</h3>
-            <p>
-              Com mais de 10 anos de experiência no mercado jurídico, a Dra. Pietra Ribeiro 
-              se especializou em Direito Civil e Empresarial, oferecendo soluções jurídicas 
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8 items-start">
+        <div data-aos="fade-right">
+          <div class="mb-12 md:mb-8">
+            <h3 class="text-3xl md:text-2xl font-semibold text-[#E1B46A] mb-4">Uma advogada dedicada à excelência</h3>
+            <p class="text-lg md:text-base leading-relaxed text-[#E8D5B7] mb-4">
+              Com mais de 10 anos de experiência no mercado jurídico, a Dra. Pietra Ribeiro
+              se especializou em Direito Civil e Empresarial, oferecendo soluções jurídicas
               inovadoras e eficazes para seus clientes.
             </p>
-            <p>
-              Sua abordagem combina conhecimento técnico sólido com uma visão estratégica, 
+            <p class="text-lg md:text-base leading-relaxed text-[#E8D5B7]">
+              Sua abordagem combina conhecimento técnico sólido com uma visão estratégica,
               sempre priorizando os melhores interesses de quem confia em seus serviços.
             </p>
           </div>
-          
-          <div class="about-values">
-            <h4>Nossos Valores</h4>
-            <div class="values-grid">
-              <div class="value-item" data-aos="fade-up" data-aos-delay="100">
-                <div class="value-icon">🎯</div>
-                <h5>Excelência</h5>
-                <p>Compromisso com a qualidade e resultados excepcionais</p>
+
+          <div class="mt-12 md:mt-8">
+            <h4 class="text-2xl md:text-xl font-semibold text-[#E1B46A] mb-6 md:mb-4">Nossos Valores</h4>
+            <div class="grid grid-cols-2 md:grid-cols-1 gap-6 md:gap-4">
+              <div
+                class="bg-[#1a2e1f] p-4 md:p-3 rounded-lg shadow-sm transition-all duration-300 border border-[#E1B46A]/30 hover:-translate-y-1 hover:shadow-md"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                <div class="text-3xl md:text-2xl mb-4 md:mb-2">🎯</div>
+                <h5 class="text-xl md:text-lg font-semibold text-[#E1B46A] mb-2 md:mb-1">Excelência</h5>
+                <p class="text-base md:text-sm text-[#E8D5B7] leading-relaxed">
+                  Compromisso com a qualidade e resultados excepcionais
+                </p>
               </div>
-              <div class="value-item" data-aos="fade-up" data-aos-delay="200">
-                <div class="value-icon">🤝</div>
-                <h5>Confiança</h5>
-                <p>Relacionamento transparente e baseado na confiança mútua</p>
+
+              <div
+                class="bg-[#1a2e1f] p-4 md:p-3 rounded-lg shadow-sm transition-all duration-300 border border-[#E1B46A]/30 hover:-translate-y-1 hover:shadow-md"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                <div class="text-3xl md:text-2xl mb-4 md:mb-2">🤝</div>
+                <h5 class="text-xl md:text-lg font-semibold text-[#E1B46A] mb-2 md:mb-1">Confiança</h5>
+                <p class="text-base md:text-sm text-[#E8D5B7] leading-relaxed">
+                  Relacionamento transparente e baseado na confiança mútua
+                </p>
               </div>
-              <div class="value-item" data-aos="fade-up" data-aos-delay="300">
-                <div class="value-icon">⚡</div>
-                <h5>Agilidade</h5>
-                <p>Respostas rápidas e soluções eficientes para seus casos</p>
+
+              <div
+                class="bg-[#1a2e1f] p-4 md:p-3 rounded-lg shadow-sm transition-all duration-300 border border-[#E1B46A]/30 hover:-translate-y-1 hover:shadow-md"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                <div class="text-3xl md:text-2xl mb-4 md:mb-2">⚡</div>
+                <h5 class="text-xl md:text-lg font-semibold text-[#E1B46A] mb-2 md:mb-1">Agilidade</h5>
+                <p class="text-base md:text-sm text-[#E8D5B7] leading-relaxed">
+                  Respostas rápidas e soluções eficientes para seus casos
+                </p>
               </div>
-              <div class="value-item" data-aos="fade-up" data-aos-delay="400">
-                <div class="value-icon">💡</div>
-                <h5>Inovação</h5>
-                <p>Abordagens modernas e estratégias inovadoras</p>
+
+              <div
+                class="bg-[#1a2e1f] p-4 md:p-3 rounded-lg shadow-sm transition-all duration-300 border border-[#E1B46A]/30 hover:-translate-y-1 hover:shadow-md"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
+                <div class="text-3xl md:text-2xl mb-4 md:mb-2">💡</div>
+                <h5 class="text-xl md:text-lg font-semibold text-[#E1B46A] mb-2 md:mb-1">Inovação</h5>
+                <p class="text-base md:text-sm text-[#E8D5B7] leading-relaxed">
+                  Abordagens modernas e estratégias inovadoras
+                </p>
               </div>
             </div>
           </div>
         </div>
-        
-        <div class="about-education" data-aos="fade-left">
-          <h4>Formação Acadêmica</h4>
-          <div class="education-timeline">
-            <div 
-              v-for="(edu, index) in education" 
+
+        <div class="bg-[#1a2e1f] rounded-xl p-10 md:p-6 shadow-lg border border-[#E1B46A]/30" data-aos="fade-left">
+          <h4 class="text-2xl md:text-xl font-semibold text-[#E1B46A] mb-6 md:mb-4">Formação Acadêmica</h4>
+          <div class="relative mb-12 md:mb-8 before:content-[''] before:absolute before:left-5 before:top-0 before:bottom-0 before:w-0.5 before:bg-[#E1B46A]/30">
+            <div
+              v-for="(edu, index) in education"
               :key="index"
-              class="timeline-item"
+              class="relative pl-12 md:pl-10 mb-8 md:mb-6"
               data-aos="fade-up"
               :data-aos-delay="index * 100"
             >
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <h5>{{ edu.degree }}</h5>
-                <p class="institution">{{ edu.institution }}</p>
-                <span class="year">{{ edu.year }}</span>
+              <div class="absolute left-3 top-2 w-4 h-4 bg-[#E1B46A]/30 rounded-full border-4 border-[#1a2e1f] shadow-[0_0_0_4px_rgba(225,180,106,0.3)]"></div>
+              <div>
+                <h5 class="text-xl md:text-base font-semibold text-[#E1B46A] mb-1">{{ edu.degree }}</h5>
+                <p class="text-base md:text-sm text-[#E8D5B7] mb-1">{{ edu.institution }}</p>
+                <span class="inline-block bg-[#E1B46A] text-[#1a2e1f] px-3 py-1 rounded-full text-sm md:text-xs font-medium">
+                  {{ edu.year }}
+                </span>
               </div>
             </div>
           </div>
-          
-          <div class="certifications">
-            <h4>Certificações</h4>
-            <ul>
-              <li v-for="(cert, index) in certifications" :key="index">
-                <span class="cert-icon">✓</span>
-                {{ cert }}
+
+          <div>
+            <h4 class="text-2xl md:text-xl font-semibold text-[#E1B46A] mb-4 md:mb-3">Certificações</h4>
+            <ul class="list-none p-0">
+              <li
+                v-for="(cert, index) in certifications"
+                :key="index"
+                class="flex items-center gap-3 py-3 md:py-2 border-b border-[#E1B46A]/30 text-[#E8D5B7] last:border-b-0"
+              >
+                <span class="text-[#E1B46A] font-bold text-lg md:text-base">✓</span>
+                <span class="text-base md:text-sm">{{ cert }}</span>
               </li>
             </ul>
           </div>
@@ -95,242 +128,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.about {
-  padding: var(--section-padding);
-  background: var(--color-background-alt);
-}
-
-.about-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-
-.about-intro h3 {
-  font-size: var(--font-size-3xl);
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-md);
-}
-
-.about-intro p {
-  font-size: var(--font-size-lg);
-  line-height: 1.7;
-  color: var(--color-text);
-  margin-bottom: var(--spacing-md);
-}
-
-.about-values {
-  margin-top: 3rem;
-}
-
-.about-values h4 {
-  font-size: var(--font-size-2xl);
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-lg);
-}
-
-.values-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-
-.value-item {
-  background: var(--color-secondary);
-  padding: var(--spacing-md);
-  border-radius: var(--border-radius-md);
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-  border: 1px solid var(--color-border);
-}
-
-.value-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
-}
-
-.value-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.value-item h5 {
-  font-size: var(--font-size-xl);
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-xs);
-}
-
-.value-item p {
-  font-size: var(--font-size-base);
-  color: var(--color-text);
-  line-height: 1.5;
-}
-
-.about-education {
-  background: var(--color-secondary);
-  padding: 2.5rem;
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--color-border);
-}
-
-.about-education h4 {
-  font-size: var(--font-size-2xl);
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-lg);
-}
-
-.education-timeline {
-  position: relative;
-  margin-bottom: 3rem;
-}
-
-.education-timeline::before {
-  content: '';
-  position: absolute;
-  left: 20px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--color-border);
-}
-
-.timeline-item {
-  position: relative;
-  padding-left: 3rem;
-  margin-bottom: 2rem;
-}
-
-.timeline-dot {
-  position: absolute;
-  left: 12px;
-  top: 8px;
-  width: 16px;
-  height: 16px;
-  background: var(--color-border);
-  border-radius: 50%;
-  border: 4px solid var(--color-secondary);
-  box-shadow: 0 0 0 4px var(--color-border);
-}
-
-.timeline-content h5 {
-  font-size: var(--font-size-xl);
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-xs);
-}
-
-.institution {
-  color: var(--color-text);
-  font-size: var(--font-size-base);
-  margin-bottom: var(--spacing-xs);
-}
-
-.year {
-  background: var(--color-primary);
-  color: var(--color-secondary);
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--border-radius-round);
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-}
-
-.certifications h4 {
-  margin-bottom: var(--spacing-md);
-  color: var(--color-primary);
-}
-
-.certifications ul {
-  list-style: none;
-  padding: 0;
-}
-
-.certifications li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--color-border);
-  color: var(--color-text);
-}
-
-.certifications li:last-child {
-  border-bottom: none;
-}
-
-.cert-icon {
-  color: var(--color-primary);
-  font-weight: bold;
-  font-size: var(--font-size-lg);
-}
-
-@media (max-width: 768px) {
-  .about {
-    padding: var(--spacing-lg) 0;
-  }
-
-  .about-content {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-  }
-
-  .about-intro h3 {
-    font-size: var(--font-size-2xl);
-  }
-
-  .about-intro p {
-    font-size: var(--font-size-base);
-  }
-  
-  .values-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-sm);
-  }
-
-  .value-item {
-    padding: var(--spacing-sm);
-  }
-
-  .value-icon {
-    font-size: 1.5rem;
-    margin-bottom: var(--spacing-xs);
-  }
-  
-  .about-education {
-    padding: var(--spacing-sm);
-  }
-
-  .about-education h4 {
-    font-size: var(--font-size-xl);
-  }
-
-  .timeline-content h5 {
-    font-size: var(--font-size-base);
-  }
-
-  .about-values {
-    margin-top: var(--spacing-lg);
-  }
-
-  .about-values h4 {
-    font-size: var(--font-size-xl);
-    margin-bottom: var(--spacing-md);
-  }
-
-  .education-timeline {
-    margin-bottom: var(--spacing-lg);
-  }
-
-  .timeline-item {
-    padding-left: 2.5rem;
-    margin-bottom: var(--spacing-md);
-  }
-}
-</style>

@@ -1,12 +1,12 @@
 <template>
-  <section id="services" class="services">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <h2>Nossos Serviços</h2>
-        <p>Áreas de especialização e serviços oferecidos</p>
+  <section id="services" class="py-20 md:py-12 bg-[#1a2e1f]">
+    <div class="max-w-7xl mx-auto px-8 md:px-4">
+      <div class="text-center mb-16 md:mb-12" data-aos="fade-up">
+        <h2 class="text-4xl md:text-3xl font-bold text-[#E1B46A] mb-4">Nossos Serviços</h2>
+        <p class="text-lg md:text-base text-[#E8D5B7]">Áreas de especialização e serviços oferecidos</p>
       </div>
-      
-      <div class="services-grid" data-aos="fade-up">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-4 mb-16 md:mb-12" data-aos="fade-up">
         <ServiceCard
           v-for="(service, index) in services"
           :key="service.id"
@@ -20,18 +20,25 @@
           @mouseleave="clearHoveredCard"
         />
       </div>
-      
-      <div class="services-cta" data-aos="fade-up" data-aos-delay="600">
-        <div class="cta-content">
-          <h3>Precisa de ajuda jurídica?</h3>
-          <p>Entre em contato para uma consulta personalizada</p>
-          <button class="btn-cta" @click="handleContact">
+
+      <div
+        class="bg-gradient-to-br from-[#1a2e1f] to-[#0f1910] rounded-2xl p-12 md:p-8 text-center text-white border border-[#E1B46A]/30"
+        data-aos="fade-up"
+        data-aos-delay="600"
+      >
+        <div>
+          <h3 class="text-3xl md:text-2xl font-bold mb-2">Precisa de ajuda jurídica?</h3>
+          <p class="text-xl md:text-lg mb-6 md:mb-4 opacity-90">Entre em contato para uma consulta personalizada</p>
+          <button
+            class="bg-[#E1B46A] text-[#1a2e1f] px-8 py-3 md:px-6 md:py-2 border-none rounded-full text-lg md:text-base font-semibold cursor-pointer transition-all duration-300 hover:bg-[#F4D03F] hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(225,180,106,0.3)]"
+            @click="handleContact"
+          >
             Agendar Consulta
           </button>
         </div>
       </div>
     </div>
-    
+
     <ServiceModal
       :selectedService="selectedService"
       @close="closeModal"
@@ -58,7 +65,7 @@ export default {
     const { rotatingCard, hoveredCard, rotateCard, setHoveredCard, clearHoveredCard } = useCardRotation()
     const { selectedItem, openModal, closeModal } = useModal()
     const { scrollToElement } = useScroll()
-    
+
     return {
       services,
       rotatingCard,
@@ -82,71 +89,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.services {
-  padding: var(--section-padding);
-  background: var(--color-background);
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-2xl);
-}
-
-.services-cta {
-  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-background) 100%);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-2xl);
-  text-align: center;
-  color: white;
-  border: 1px solid var(--color-border);
-}
-
-.cta-content h3 {
-  font-size: var(--font-size-3xl);
-  font-weight: 700;
-  margin-bottom: var(--spacing-sm);
-}
-
-.cta-content p {
-  font-size: var(--font-size-xl);
-  margin-bottom: var(--spacing-lg);
-  opacity: 0.9;
-}
-
-.btn-cta {
-  background: var(--color-primary);
-  color: var(--color-secondary);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border: none;
-  border-radius: var(--border-radius-round);
-  font-size: var(--font-size-lg);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var(--transition-base);
-}
-
-.btn-cta:hover {
-  background: var(--color-accent);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-primary);
-}
-
-@media (max-width: 768px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-md);
-  }
-  
-  .services-cta {
-    padding: var(--spacing-lg);
-  }
-  
-  .cta-content h3 {
-    font-size: var(--font-size-2xl);
-  }
-}
-</style>

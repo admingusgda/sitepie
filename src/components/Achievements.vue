@@ -1,22 +1,24 @@
 <template>
-  <section class="achievements">
-    <div class="container">
-      <div class="achievements-grid">
-        <div 
-          v-for="(achievement, index) in achievements" 
+  <section class="py-16 md:py-12 bg-gradient-to-br from-[#1a2e1f] to-[#0f1910] text-white">
+    <div class="max-w-7xl mx-auto px-8 md:px-4">
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-8 md:gap-4">
+        <div
+          v-for="(achievement, index) in achievements"
           :key="index"
-          class="achievement-card"
+          class="bg-[#E1B46A]/10 backdrop-blur-sm rounded-lg p-6 md:p-4 text-center border border-[#E1B46A]/30 transition-all duration-300 relative overflow-hidden hover:-translate-y-1 hover:bg-[#E1B46A]/20 hover:shadow-lg min-h-[160px] md:min-h-[140px] before:content-[''] before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-transparent before:via-[#E1B46A]/20 before:to-transparent before:transition-[left] before:duration-500 hover:before:left-full"
           data-aos="fade-up"
           :data-aos-delay="index * 100"
         >
-          <div class="achievement-icon">
+          <div class="text-5xl md:text-4xl sm:text-3xl mb-2 md:mb-1 flex justify-center animate-float" :style="{ animationDelay: `${index * 0.5}s` }">
             <span>{{ achievement.icon }}</span>
           </div>
-          <div class="achievement-content">
-            <div class="achievement-number" :ref="`number-${index}`">
+          <div class="relative z-10">
+            <div class="text-5xl md:text-3xl sm:text-2xl font-bold mb-1 bg-gradient-to-r from-[#E1B46A] to-[#F4D03F] bg-clip-text text-transparent leading-none">
               {{ animatedNumbers[index] || '0' }}
             </div>
-            <div class="achievement-label">{{ achievement.label }}</div>
+            <div class="text-base md:text-sm sm:text-xs font-medium text-[#E8D5B7] uppercase tracking-wide">
+              {{ achievement.label }}
+            </div>
           </div>
         </div>
       </div>
@@ -49,16 +51,16 @@ export default {
           }
         })
       }, { threshold: 0.5 })
-      
-      const achievementCards = document.querySelectorAll('.achievement-card')
+
+      const achievementCards = document.querySelectorAll('[data-aos="fade-up"]')
       achievementCards.forEach(card => observer.observe(card))
     },
-    
+
     animateAllNumbers() {
       this.achievements.forEach((achievement, index) => {
         const targetNumber = achievement.number.replace(/[^\d]/g, '')
         const suffix = achievement.number.replace(/[\d]/g, '')
-        
+
         if (targetNumber) {
           this.animateNumber(index, parseInt(targetNumber), suffix)
         } else {
@@ -66,13 +68,13 @@ export default {
         }
       })
     },
-    
+
     animateNumber(index, target, suffix) {
       const duration = 2000
       const steps = 60
       const increment = target / steps
       let current = 0
-      
+
       const timer = setInterval(() => {
         current += increment
         if (current >= target) {
@@ -87,150 +89,16 @@ export default {
 </script>
 
 <style scoped>
-.achievements {
-  padding: var(--spacing-2xl) 0;
-  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-background) 100%);
-  color: white;
-}
-
-.achievements-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-.achievement-card {
-  background: rgba(225, 180, 106, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  text-align: center;
-  border: 1px solid rgba(225, 180, 106, 0.3);
-  transition: all var(--transition-base);
-  position: relative;
-  overflow: hidden;
-}
-
-.achievement-card:hover {
-  transform: translateY(-5px);
-  background: rgba(225, 180, 106, 0.2);
-  box-shadow: var(--shadow-lg);
-}
-
-.achievement-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(225, 180, 106, 0.2), transparent);
-  transition: left 0.5s ease;
-}
-
-.achievement-card:hover::before {
-  left: 100%;
-}
-
-.achievement-icon {
-  font-size: var(--font-size-5xl);
-  margin-bottom: var(--spacing-sm);
-  display: flex;
-  justify-content: center;
-  animation: float 3s ease-in-out infinite;
-}
-
-.achievement-icon:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.achievement-icon:nth-child(2) {
-  animation-delay: 0.5s;
-}
-
-.achievement-icon:nth-child(3) {
-  animation-delay: 1s;
-}
-
-.achievement-icon:nth-child(4) {
-  animation-delay: 1.5s;
-}
-
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-.achievement-content {
-  position: relative;
-  z-index: 1;
-}
-
-.achievement-number {
-  font-size: var(--font-size-5xl);
-  font-weight: 700;
-  margin-bottom: var(--spacing-xs);
-  background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-}
-
-.achievement-label {
-  font-size: var(--font-size-base);
-  font-weight: 500;
-  color: var(--color-text);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-@media (max-width: 768px) {
-  .achievements {
-    padding: var(--spacing-lg) 0;
+  0%, 100% {
+    transform: translateY(0px);
   }
-
-  .achievements-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-sm);
-  }
-  
-  .achievement-card {
-    padding: var(--spacing-md);
-    min-height: 160px;
-  }
-  
-  .achievement-number {
-    font-size: var(--font-size-3xl);
-  }
-  
-  .achievement-icon {
-    font-size: var(--font-size-3xl);
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .achievement-label {
-    font-size: var(--font-size-sm);
+  50% {
+    transform: translateY(-10px);
   }
 }
 
-@media (max-width: 480px) {
-  .achievements-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-xs);
-  }
-
-  .achievement-card {
-    padding: var(--spacing-sm);
-    min-height: 140px;
-  }
-
-  .achievement-number {
-    font-size: var(--font-size-2xl);
-  }
-
-  .achievement-icon {
-    font-size: 2rem;
-  }
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
 </style>
